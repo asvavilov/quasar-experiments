@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { LooseDictionary, Platform } from 'quasar'
+import { Platform } from 'quasar'
 import {
   defineComponent, ref
 } from 'vue';
