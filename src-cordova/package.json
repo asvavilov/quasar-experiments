@@ -1,8 +1,8 @@
 {
-  "name": "org.cordova.quasar.app",
-  "displayName": "Quasar Experiments",
+  "name": "net.yasla.quasar",
+  "displayName": "My Quasar App",
   "version": "1.0.0",
-  "description": "My Quasar experiments",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,20 +13,21 @@
   "author": "asvavilov",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^9.0.0",
+    "cordova-android": "^10.1.2",
+    "cordova-plugin-file": "^7.0.0",
     "cordova-plugin-tts": "^0.2.3",
-    "cordova-plugin-whitelist": "^1.3.4",
-    "cordova-sqlite-evcore-extbuild-free": "^0.12.1"
+    "cordova-sqlite-evcore-extbuild-free": "^0.18.0"
   },
   "cordova": {
-    "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-sqlite-evcore-extbuild-free": {},
-      "cordova-plugin-file": {},
-      "cordova-plugin-tts": {}
-    },
     "platforms": [
       "android"
-    ]
+    ],
+    "plugins": {
+      "cordova-plugin-tts": {},
+      "cordova-sqlite-evcore-extbuild-free": {},
+      "cordova-plugin-file": {
+        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
+      }
+    }
   }
 }

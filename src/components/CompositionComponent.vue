@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { LooseDictionary, Platform } from 'quasar'
+import { Platform } from 'quasar'
 import {
   defineComponent, ref
 } from 'vue';
@@ -41,12 +41,12 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props) {
+  setup() {
     let debug = ref('');
     let alert = ref(false);
     let alertText = ref('');
 
-    let log = (data:any, linesAfter:number = 1) => {
+    let log = (data:any, linesAfter = 1) => {
       debug.value += JSON.stringify(data) + ("\n".repeat(linesAfter));
     }
 
@@ -60,7 +60,7 @@ export default defineComponent({
     }
 
     // примеры работы с indexedDB
-    let testIndexedDB = (mydata: Array<Object>) => {
+    let testIndexedDB = (mydata: Array<any>) => {
       const rdb = indexedDB.open('mydb', 1);
       rdb.onerror = function(event) {
         console.log("indexedDB onerror");
@@ -128,6 +128,17 @@ export default defineComponent({
       };
     }
 
+    const testMyPlugin = () => {
+      if (Platform.is.cordova)
+      {
+        cordova.plugins.MyPlugin.coolMethod("coolMethod", function(response){
+          log('myplugin success: ' + response);
+        }, function(error){
+          log('myplugin error: ' + error);
+        });
+      }
+    };
+
     // примеры работы с sqlite
     let testSqlite = () => {
       /*
@@ -137,7 +148,7 @@ export default defineComponent({
       IOS location (with location:1 parameter) cordova.file.documentsDirectory+"your_database_name"
       */
 /*
-оригинал базы лежит в корне (test.db) и копия должна быть, например, в папке src-cordova/www для использования в коде
+оригинал базы: public/test.db
 $ sqlite3 test.db
 sqlite> create table tbl1(one varchar(10), two smallint);
 sqlite> insert into tbl1 values('hello!',10);
@@ -152,23 +163,6 @@ sqlite> CREATE TABLE tbl2 (
    ...>   f3 real
    ...> );
 */
-
-
-/*
-при изменении кода плагина, требуется переустановка
-$ plugman uninstall --platform android --project platforms/android --plugin ../MyPlugin/
-$ plugman install --platform android --project platforms/android --plugin ../MyPlugin/
-*/
-
-
-if (Platform.is.cordova)
-{
-  cordova.plugins.MyPlugin.coolMethod("coolMethod", function(response){
-    log('myplugin success: ' + response);
-  }, function(error){
-    log('myplugin error: ' + error);
-  });
-}
 
 
 if (Platform.is.cordova)
@@ -250,6 +244,8 @@ if (Platform.is.cordova)
       debug.value = '';
 
       log(Platform.is.cordova ? cordovaFile : 'not cordova');
+
+      testMyPlugin();
 
       //const mydata = readImport();
 

@@ -8,11 +8,11 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="toggleLeftDrawer"
         />
 
         <q-toolbar-title>
-          MyApp
+          Quasar App
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -23,15 +23,14 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
     >
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
         >
           Какие-то ссылки
         </q-item-label>
+
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
@@ -46,15 +45,22 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import EssentialLink from 'components/EssentialLink.vue'
+<script setup lang="ts">
+import { ref } from 'vue';
+import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
 
-const linksData = [
+const essentialLinks: EssentialLinkProps[] = [
   {
     title: 'главная',
     caption: '',
     icon: 'home',
     link: '/'
+  },
+  {
+    title: 'главная оригинальная',
+    caption: '',
+    icon: 'index-origin',
+    link: '/index-origin'
   },
   {
     title: 'дополнительные эксперименты',
@@ -84,16 +90,9 @@ const linksData = [
   }
 ];
 
-import { defineComponent, ref } from 'vue';
+const leftDrawerOpen = ref(false)
 
-export default defineComponent({
-  name: 'MainLayout',
-  components: { EssentialLink },
-  setup() {
-    const leftDrawerOpen = ref(false);
-    const essentialLinks = ref(linksData);
-
-    return {leftDrawerOpen, essentialLinks}
-  }
-});
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value
+}
 </script>

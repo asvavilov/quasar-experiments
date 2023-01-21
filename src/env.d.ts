@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string;
@@ -40,6 +42,9 @@ declare namespace TTS {
   function openInstallTts(): Promise<void>;
 }
 
+
+/*
+TODO проверить актуальные definitions
 
 // Type definitions for cordova-sqlite-storage 1.5
 // Project: https://github.com/xpbrew/cordova-sqlite-storage
@@ -109,3 +114,4 @@ declare namespace SQLitePlugin {
       myTest(ok?: (value: string) => void, error?: (msg: string) => void): void;
   }
 }
+*/

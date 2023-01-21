@@ -1,8 +1,15 @@
 ## todo/fixme
 ...
 
+
+# My Quasar App (mymob)
+
+My Quasar Project
+
 ## Install the dependencies
 ```bash
+yarn
+# or
 npm install
 ```
 
@@ -11,10 +18,34 @@ npm install
 quasar dev
 ```
 
+
+### Lint the files
+```bash
+yarn lint
+# or
+npm run lint
+```
+
+
+### Format the files
+```bash
+yarn format
+# or
+npm run format
+```
+
+
+
 ### Build the app for production
 ```bash
 quasar build
 ```
+
+### Customize the configuration
+See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+
+
+## мои дополнения
 
 Открытие проекта в Android Studio (путь к которой указан в quasar.conf.js в linuxAndroidStudio).
 Запуск сборки вручную из Android Studio, после ее открытия.
@@ -28,13 +59,12 @@ quasar build --mode android --target android --ide
 
 "--devtools" открывает Vue Devtools
 
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
-
 ## sqlite
 1. установить плагин (например, cordova-sqlite-storage отсюда https://github.com/storesafe/cordova-sqlite-storage (см. варианты https://cordova.apache.org/docs/en/latest/cordova/storage/storage.html#sqlite-plugin))
 UPD этот поддерживает подключение базы с указанием пути: https://github.com/storesafe/cordova-sqlite-evcore-extbuild-free
 2. для использования в typescript объявить types в каком-нибудь доступном *.d.ts (например, можно взять отсюда @types/cordova-sqlite-storage)
+
+оригинал базы лежит в корне (test.db) и копия должна быть, например, в папке src-cordova/www для использования в коде
 
 ## свои плагины
 plugman: после создания плагина формируется неправильные неймспейсы, нужно проверять plugin.xml и исходные java-файлы и задавать правильно
