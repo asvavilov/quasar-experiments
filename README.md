@@ -64,8 +64,6 @@ quasar build --mode android --target android --ide
 UPD этот поддерживает подключение базы с указанием пути: https://github.com/storesafe/cordova-sqlite-evcore-extbuild-free
 2. для использования в typescript объявить types в каком-нибудь доступном *.d.ts (например, можно взять отсюда @types/cordova-sqlite-storage)
 
-оригинал базы лежит в корне (test.db) и копия должна быть, например, в папке src-cordova/www для использования в коде
-
 ## свои плагины
 plugman: после создания плагина формируется неправильные неймспейсы, нужно проверять plugin.xml и исходные java-файлы и задавать правильно
 
